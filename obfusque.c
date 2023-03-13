@@ -1,11 +1,6 @@
 #include<arpa/inet.h>
-#include<string.h>
-#include<strings.h>
-#include<unistd.h>
-#include<fcntl.h>
 #include<sys/epoll.h>
 #include<errno.h>
-#include<stdio.h>
 #define S(b) sizeof(b)
 typedef struct sockaddr_in t;int main()
 {int i,e,n,l,c,o;char b[0xFF];t s={.sin_family
@@ -32,4 +27,4 @@ S(b))<=0||errno==11){break;}else{printf
 .fd,b,strlen(b));}}}if(x[i].events&
 8208){printf("[+] connection closed\n");
 epoll_ctl(e,2,x[i].data.fd,
-NULL);close(x[i].data.fd);continue;}}}}
+0);close(x[i].data.fd);continue;}}}}
