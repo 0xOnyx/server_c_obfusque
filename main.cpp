@@ -1,10 +1,10 @@
 
-#include <stdlib.h>   // card > aek.ppm
-#include <stdio.h>
-#include <math.h>
-typedef int i;
-typedef float f;
-struct v{
+#include<stdlib.h>//card>aek.ppm
+#include<stdio.h>
+#include<math.h>
+typedefinti;
+typedeffloatf;
+structv{
 	f x,y,z;
 	v operator+(v r)
 	{

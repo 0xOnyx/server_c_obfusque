@@ -1,105 +1,35 @@
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <string.h>
-#include <strings.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/epoll.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-static void epoll_ctl_add(int epfd, int fd, uint32_t events)
-{
-	struct epoll_event ev;
-	ev.events = events;
-	ev.data.fd = fd;
-	if (epoll_ctl(epfd, EPOLL_CTL_ADD, fd, &ev) == -1) {
-		perror("epoll_ctl()\n");
-		exit(1);
-	}
-}
-
-static void setnonblocking(int s)
-{
-	fcntl(s, F_SETFD, fcntl(s, F_GETFD, 0) | O_NONBLOCK);
-}
-
-
-int main()
-{
-	int i,e,n,l;
-	int conn_sock;
-	socklen_t socklen;
-	char buf[255];
-	struct sockaddr_in srv_addr;
-	struct sockaddr_in cli_addr;
-	struct epoll_event events[32];
-
-	l = socket(2, SOCK_STREAM, 0);
-
-	bzero(&srv_addr, sizeof(struct sockaddr_in));
-	srv_addr.sin_family = 2;
-	srv_addr.sin_addr.s_addr = INADDR_ANY;
-	srv_addr.sin_port = htons(8080);
-	bind(l, (struct sockaddr *) &srv_addr, sizeof(srv_addr));
-
-	setnonblocking(l);
-	listen(l, 16);
-
-	e = epoll_create(1);
-	epoll_ctl_add(e, l, EPOLLIN | EPOLLOUT | EPOLLET);
-
-	socklen = sizeof(cli_addr);
-	while (1)
-	{
-		n = epoll_wait(e, events, 32, -1);
-		for (i = 0; i < n; i++)
-		{
-			if (events[i].data.fd == l)
-			{
-				conn_sock =
-						accept(l,
-							   (struct sockaddr *) &cli_addr,
-							   &socklen);
-
-				inet_ntop(2, (char *) &(cli_addr.sin_addr),
-						  buf, sizeof(cli_addr));
-				printf("[+] connected with %s:%d\n", buf,
-					   ntohs(cli_addr.sin_port));
-
-				setnonblocking(conn_sock);
-				epoll_ctl_add(e, conn_sock,
-							  EPOLLIN | EPOLLET | EPOLLRDHUP |
-							  EPOLLHUP);
-			} else if (events[i].events & EPOLLIN)
-			{
-				for (;;)
-				{
-					bzero(buf, sizeof(buf));
-					if (read(events[i].data.fd, buf,
-							 sizeof(buf)) <= 0|| errno == EAGAIN)
-					{
-						break;
-					} else
-					{
-						printf("[+] data: %s\n", buf);
-						write(events[i].data.fd, buf,
-							  strlen(buf));
-					}
-				}
-			} else
-			{
-				printf("[+] unexpected\n");
-			}
-			if (events[i].events & (EPOLLRDHUP | EPOLLHUP))
-			{
-				printf("[+] connection closed\n");
-				epoll_ctl(e, EPOLL_CTL_DEL,
-						  events[i].data.fd, NULL);
-				close(events[i].data.fd);
-				continue;
-			}
-		}
-	}
-}
+#include<arpa/inet.h>
+#include<string.h>
+#include<strings.h>
+#include<unistd.h>
+#include<fcntl.h>
+#include<sys/epoll.h>
+#include<errno.h>
+#include<stdio.h>
+#define S(b) sizeof(b)
+typedef struct sockaddr_in t;int main()
+{int i,e,n,l,c,o;char b[0xFF];t s={.sin_family
+=2,.sin_port=htons(0x1F90)},m;struct
+epoll_event x[0xF];l=socket(2,1,
+0);bind(l,&s,S(s));fcntl
+(l,2,fcntl(l,1,0)|04000);
+listen(l,16);e=epoll_create(1);
+epoll_ctl(e,1,l,&((struct
+epoll_event){.events=2147483653,.data.fd=l}));
+o=S(m);for(;;){n=epoll_wait(e,x,
+32,-1);for(i=0;i<n;i++){if(
+x[i].data.fd==l){c=accept(l,(struct
+sockaddr *)&m,&o);inet_ntop(2,&
+(m.sin_addr),b,S(m));printf("[+]"
+" connected %s:%d\n",b,ntohs(m.sin_port));
+fcntl(c,2,fcntl(c,1,0)|04000);
+epoll_ctl(e,1,c,&((struct
+epoll_event){.events=2147491857,.data.fd= c}));}
+else if(x[i].events&0x001){for(;;){bzero(b,
+S(b));if (read(x[i].data.fd,b,
+S(b))<=0||errno==11){break;}else{printf
+("[+] data: %s\n",b);write(x[i].data
+.fd,b,strlen(b));}}}if(x[i].events&
+8208){printf("[+] connection closed\n");
+epoll_ctl(e,2,x[i].data.fd,
+NULL);close(x[i].data.fd);continue;}}}}
