@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
-project(untitled)
+project(server)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(untitled obfusque.c)
+add_executable(server obfusque.c)
