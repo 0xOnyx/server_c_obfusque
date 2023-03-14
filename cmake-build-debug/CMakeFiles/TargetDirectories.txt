@@ -1,3 +1,0 @@
-/home/onyx/CLionProjects/server_c_obfusque/cmake-build-debug/CMakeFiles/untitled.dir
-/home/onyx/CLionProjects/server_c_obfusque/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/onyx/CLionProjects/server_c_obfusque/cmake-build-debug/CMakeFiles/rebuild_cache.dir
