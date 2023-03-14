@@ -1,4 +1,4 @@
-# Install script for directory: /tmp/tmp.RsD68ejazA
+# Install script for directory: /home/onyx/CLionProjects/server_c_obfusque
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/tmp/tmp.RsD68ejazA/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/onyx/CLionProjects/server_c_obfusque/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

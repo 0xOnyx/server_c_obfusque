@@ -8,11 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/tmp/tmp.RsD68ejazA/main.c" "CMakeFiles/untitled.dir/main.c.o" "gcc" "CMakeFiles/untitled.dir/main.c.o.d"
+  "/home/onyx/CLionProjects/server_c_obfusque/obfusque.c" "CMakeFiles/untitled.dir/obfusque.c.o" "gcc" "CMakeFiles/untitled.dir/obfusque.c.o.d"
   )
 
-# Targets to which this target links which contain Fortran sources.
-set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

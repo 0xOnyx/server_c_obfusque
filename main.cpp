@@ -1,4 +1,3 @@
-
 #include<stdlib.h>//card>aek.ppm
 #include<stdio.h>
 #include<math.h>

@@ -1,1 +1,1 @@
-/usr/bin/cc -g CMakeFiles/untitled.dir/main.c.o -o untitled 
+/usr/bin/cc -g CMakeFiles/untitled.dir/obfusque.c.o -o untitled 
